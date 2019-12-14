@@ -1,4 +1,5 @@
 import random
+from labyrinth import Labyrinth
 
 class Position: 
     """ Cette classe définit une position."""
@@ -29,14 +30,9 @@ class Position:
     def __eq__(self, other):
         """ Cette fonction permet de comparer si deux positions sont identiques. """
 
-        return self.x == other.x and self.y == other.y
+        return self == other
 
     def __repr__(self):
-        """ Cette fonction """
+        """ Cette fonction renvoie la position sous forme x y"""
         
-        return "self.x, self.y"
-
-
-
-
-# méthode spéciales contains pour voir l'apprtenance d'une position aux paths
+        return f"Position {self.x}, {self.y}"

@@ -22,6 +22,8 @@
    O Traduire les commentaires en anglais
    O Le programme doit être standalone
 
+   /12/12 modification de la méthode spéciale comparative de position, des positions des items, player & garde,
+
 
          # DOCUMENT TEXTE EXPLIQUANT MA DEMARCHE #
 
