@@ -14,10 +14,11 @@ class Game:
         self.labyrinth.define_path("labyrinth.txt")
         self.player = Player("MacGyver", 0, self.labyrinth.start)
         self.garde = Garde(self.labyrinth.end)
+        items_positions = self.labyrinth.random_pos()
         self.items = [
-            Item("une aiguille", self.labyrinth.paths[0]), 
-            Item("un petit tube en plastique", self.labyrinth.paths[1]), 
-            Item("de l'éther", self.labyrinth.paths[2])
+            Item("une aiguille", items_positions[0]), 
+            Item("un petit tube en plastique", items_positions[1]), 
+            Item("de l'éther", items_positions[2])
         ] 
     
     def is_valid_position(self, position):

@@ -1,9 +1,7 @@
-from position import Position
-
 class Item:
-    def __init__(self, name, position):
+    def __init__(self, name, position: Position:
         self.name = name
-        self.position = Position(x, y)
+        self.position = position
 
     def get_position(self):
             return self.position

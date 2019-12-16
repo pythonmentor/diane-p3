@@ -8,7 +8,6 @@ class Labyrinth:
         """ Cette fonction initialise un labyrinthe avec des chemins, une position de départ, d'arrivée, et des murs. """
 
         self._paths = []
-        self._paths_complets = []
         self._start = None
         self._end = None
         self._walls = []
@@ -29,16 +28,13 @@ class Labyrinth:
                     elif c == "-":
                         self._walls.append(Position(num_c, num_line))
         
-        random.shuffle(self._paths)
-        self._paths_complets.append(self._start)
-        self._paths_complets.append(self._end)
-        self._paths_complets.append(self._paths)
+        self._paths.append(self._end)
+        self._paths.append(self._start)
 
     
     def random_pos(self):
         """ Cette fonction définit une position aléatoire qui n'est ni l'arrivée ni le départ. """
-        random.shuffle(self._paths) 
-        return random.choice(self._paths)
+        return random.sample(self._paths[:-2], 3)
 
 lab = Labyrinth()
 lab.define_path
