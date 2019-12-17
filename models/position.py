@@ -1,5 +1,4 @@
 import random
-from .labyrinth import Labyrinth
 
 class Position: 
     """ Cette classe définit une position."""
