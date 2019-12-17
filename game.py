@@ -11,7 +11,7 @@ class Game:
         """ Cette fonction initie le jeu avec un labyrinthe, un joueur, un garde et 3 items éparpillés. """
         self.running = False
         self.labyrinth = Labyrinth()
-        self.labyrinth.define_path("labyrinth.txt")
+        self.labyrinth.define_path("map.txt")
         self.player = Player("MacGyver", 0, self.labyrinth.start)
         self.garde = Garde(self.labyrinth.end)
         items_positions = self.labyrinth.random_pos()
@@ -26,6 +26,7 @@ class Game:
 
 """     def catch_item(self):
         if self.player.position == self.items
+            self.player.bag += 1
             print("Bravo, vous avez attrapé " + str(self.player.bag) + " objet(s).") """
 
     def exit(self):

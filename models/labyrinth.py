@@ -30,13 +30,7 @@ class Labyrinth:
         
         self._paths.append(self._end)
         self._paths.append(self._start)
-
     
     def random_pos(self):
         """ Cette fonction définit une position aléatoire qui n'est ni l'arrivée ni le départ. """
         return random.sample(self._paths[:-2], 3)
-
-lab = Labyrinth()
-lab.define_path
-yo = lab.random_pos()
-print(yo)

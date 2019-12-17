@@ -34,4 +34,4 @@ class Position:
     def __repr__(self):
         """ Cette fonction renvoie la position sous forme x y"""
         
-        return f"Position {self.x}, {self.y}"
+        return f"Position ({self.x}, {self.y})"
