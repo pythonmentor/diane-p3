@@ -12,6 +12,7 @@
 
    O Répartir aléatoirement les objets dans le labyrinthe à chaque (ré)ouverture du jeu.
    O Animer le personnage MacGyver
+   O Ne pas mélanger le code qui va représenter les objets, celui qui va faire des prints et celui qui va faire des inputs
 
    O Récupérer les objets en se déplaçant dessus
    O Créer la fonction exit
@@ -42,4 +43,21 @@ Choix de l'algorithme : pourquoi ?
 
 Difficultés rencontrées ?
 
+- Comment comparer des positions et vérifier leur collisions
+- Comment déplacer McGyver ?
+
+
 Solutions trouvées ?
+
+- Utilisation de la méthode spéciale repr et eq
+
+
+Démarche
+
+- Création d'une classe position qui sera partagée par tous les objets et pourra faire l'objet de méthodes
+- Passage en MVC avec des sous packages
+  le model c'est toutes les classes qui ne dépendent pas d'une interface graphique ou d'un mode de saisi en particulier, un model pour chaque classe avec le principe de responsabilité unique. Pour que soit bien de la POO et pas du code procédure regroupée dans une seule classe !
+- Structure d'import qui part de la racine donc on doit modifier l'import quand on passe des modules dans des packages
+ajout du fichier __init__.py dans chaque package
+
+- Test de la classe position qui fonctionne pour faire avancer un objet en fonction d'un input, OK

@@ -1,0 +1,63 @@
+
+# initialise pygame
+pygame.init()
+# Create our screen with a width and height
+screen = pygame.display.set_mode((32*15, 32*15))
+# Make our pygame clock
+clock = pygame.time.Clock()
+# Let's predefine some colors for clarity, these are easy on the eyes, and look good
+DARK = (50, 50, 50)
+LIGHT = (210, 210, 210)
+# Let's make a rectangle, with x and y and width an height
+rect = pygame.Rect((0, 0), (32, 32))
+# Then make a surface with a width and height
+surface = pygame.Surface((32, 32))
+# And fill the surface with a color
+surface.fill(LIGHT)
+# Start our game loop
+while True:
+# Let's set the clock's FPS to 60
+  clock.tick(60)
+# Now we can start the event loop
+  for event in pygame.event.get():
+    # If the event type is QUIT
+    if event.type == pygame.QUIT:
+      # Then we end pygame
+      pygame.quit()
+      # And quit the program
+      quit()
+      
+    # Otherwise, if a key is down
+    elif event.type == pygame.KEYDOWN:
+      # And that key is w
+      if event.key == pygame.K_w:
+        # Move the rectangle up
+        rect.move_ip(0, -32)
+
+      # And that key is s
+      elif event.key == pygame.K_s:
+        # Move the rectangle down
+        rect.move_ip(0, 32)
+
+      # And that key is a
+      elif event.key == pygame.K_a:
+        # Move the rectangle left
+        rect.move_ip(-32, 0)
+
+      # And that key is d
+      elif event.key == pygame.K_d:
+        # Move the rectangle right
+        rect.move_ip(32, 0)
+        
+pygame, like most other game modules, uses a Cartesian Coordinate System, from top left, to bottom right. this means that the top left most point is 0, 0, and the bottom right most point is width, height. So we have to use negatives to go up/left, or positive to go down/right.
+
+Using the Cartesian Coordinate System, the horizontal and vertical are instead called x and y. So, if we wanted to move left, we would move -32 on the x, and 0 on the y`.
+
+If you don't understand this system still, then have a look at this reference. https://en.wikipedia.org/wiki/Cartesian_coordinate_system
+
+  # Clear the screen by filling it
+  screen.fill(DARK)
+  # Then blit (add to the buffer) our surface with our rectangle on
+  screen.blit(surface, rect)
+  # Then update the display to show the buffer
+  pygame.display.update()

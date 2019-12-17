@@ -60,3 +60,8 @@ if __name__ == '__main__':
     main()
 
 
+# hero = Position(0,0)
+# print("hero")
+#command = input("what?")
+# hero.update(command)
+# print(hero)
