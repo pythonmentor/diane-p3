@@ -34,3 +34,11 @@ class Labyrinth:
     def random_pos(self):
         """ Cette fonction définit une position aléatoire qui n'est ni l'arrivée ni le départ. """
         return random.sample(self._paths[:-2], 3)
+
+# lab = Labyrinth()
+# lab.define_path("map.txt")
+# a = lab._paths
+# print(a)
+# b = [] 
+# b.append(lab.random_pos())
+# print(b)
