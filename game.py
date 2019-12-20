@@ -23,14 +23,10 @@ class Game:
         ] 
 
     def exit(self):
-        if self.player.position == (14,14) and self.player.bag == 3:
-            print("Bravo, vous avez pu endormir le garde!")
-        elif self.player.position == (14,14) and self.player.bag == 2:
-            print("Et non, il vous manquait un objet, perdu") #exit game
-        elif self.player.position == (14,14) and self.player.bag == 1:
-            print("Et non, il vous manquait un objet, perdu") #exit game
+        if self.player.bag == 3:
+            print("Bravo, vous avez pu endormir le garde et sortir du labyrinthe, vous avez gagné !")
         else:
-            pass
+            print("Et non, il vous manquait un ou des objets, perdu")
 
     def start(self):
         self.running = True
@@ -39,22 +35,26 @@ class Game:
             print( "\nVotre position est : " + str(position_initiale))
             direction = str(input("Où voulez-vous aller ? \n Tapez 'u' 'd' 'l' ou 'r' "))
             self.player.position.update(direction)            
-
             print("Les objets sont ici : "+ str(self.items_positions))
-            # Voyons s'il y a un objet sur cette position
-            if self.player.position in self.items_positions:
-                self.player.bag += 1
-                print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
-            else:
-                pass
 
-            # Voyons si la direction invite à une position valide
-            if self.player.position in self.labyrinth._paths:
-                print("\nVous pouvez avancer !")
+            #Voyons si nous sommes sur la case de sortie
+            if self.player.position == Position(14, 14):
+                self.exit()
             else:
-                print("\nCe chemin n'est pas autorisé !")
-                self.player.position = position_initiale
-            print("Votre position est maintenant : " + str(self.player.position))
+                # Voyons s'il y a un objet sur cette position
+                if self.player.position in self.items_positions:
+                    self.player.bag += 1
+                    print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
+                else:
+                    pass
+
+                # Voyons si la direction invite à une position valide
+                if self.player.position in self.labyrinth._paths:
+                    print("\nVous pouvez avancer !")
+                else:
+                    print("\nCe chemin n'est pas autorisé !")
+                    self.player.position = position_initiale
+                print("Votre position est maintenant : " + str(self.player.position))
 
 def main():
     jeu = Game()
