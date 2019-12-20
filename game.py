@@ -22,11 +22,6 @@ class Game:
             Item("de l'éther", self.items_positions[2])
         ] 
 
-    def catch_item(self):
-        if self.player.position in self.items_positions:
-            self.player.bag += 1
-            print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
-
     def exit(self):
         if self.player.position == (14,14) and self.player.bag == 3:
             print("Bravo, vous avez pu endormir le garde!")
@@ -42,10 +37,18 @@ class Game:
         while self.running: 
             position_initiale = copy(self.player.position)
             print( "\nVotre position est : " + str(position_initiale))
-            print("Les objetcs son s")
-
             direction = str(input("Où voulez-vous aller ? \n Tapez 'u' 'd' 'l' ou 'r' "))
             self.player.position.update(direction)            
+
+            print("Les objets sont ici : "+ str(self.items_positions))
+            # Voyons s'il y a un objet sur cette position
+            if self.player.position in self.items_positions:
+                self.player.bag += 1
+                print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
+            else:
+                pass
+
+            # Voyons si la direction invite à une position valide
             if self.player.position in self.labyrinth._paths:
                 print("\nVous pouvez avancer !")
             else:
