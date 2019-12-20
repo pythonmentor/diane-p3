@@ -42,6 +42,7 @@ class Game:
         while self.running: 
             position_initiale = copy(self.player.position)
             print( "\nVotre position est : " + str(position_initiale))
+            print("Les objetcs son s")
 
             direction = str(input("Où voulez-vous aller ? \n Tapez 'u' 'd' 'l' ou 'r' "))
             self.player.position.update(direction)            
