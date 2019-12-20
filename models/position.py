@@ -22,14 +22,14 @@ class Position:
             self.y += 1
 
     def get_position(self):
-        """ Cette fonction renvoit la position. """
+        """ Cette fonction renvoit la position sous forme de tuple. """
 
         return Position(self.x, self.y)
 
     def __eq__(self, other):
         """ Cette fonction permet de comparer si deux positions sont identiques. """
-
-        return self == other
+        if self.x == other.x and self.y == other.y:
+            return True
 
     def __repr__(self):
         """ Cette fonction renvoie la position sous forme x y"""

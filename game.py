@@ -5,6 +5,7 @@ from models.garde import Garde
 from models.labyrinth import Labyrinth
 
 import random
+from copy import copy
 
 class Game:
     def __init__(self):
@@ -12,7 +13,7 @@ class Game:
         self.running = False
         self.labyrinth = Labyrinth()
         self.labyrinth.define_path("map.txt")
-        self.player = Player("MacGyver", 0, self.labyrinth._start)
+        self.player = Player("MacGyver", 0, copy(self.labyrinth._start))
         self.garde = Garde(self.labyrinth._end)
         self.items_positions = self.labyrinth.random_pos()
         self.items = [
@@ -20,10 +21,6 @@ class Game:
             Item("un petit tube en plastique", self.items_positions[1]), 
             Item("de l'éther", self.items_positions[2])
         ] 
-    
-    def is_valid_position(self, position):
-        if position in self.labyrinth._paths:
-            True
 
     def catch_item(self):
         if self.player.position in self.items_positions:
@@ -42,15 +39,18 @@ class Game:
 
     def start(self):
         self.running = True
-        while self.running:
-            direction = str(input("Where would you like to go ? R, L, U or D(down)"))
-            position_initiale = self.player.position.copy()
-            self.player.position.update(direction)
-            if self.player.position not in self.labyrinth.paths:
-                self.player.position = position_initiale
-                print("Ce chemin n'est pas autorisé!")
+        while self.running: 
+            position_initiale = copy(self.player.position)
+            print( "\nVotre position est : " + str(position_initiale))
 
-        print("Votre position est mantenant : x = " + str(self.player.position.x) + " et y = "+ str(self.player.position.y))
+            direction = str(input("Où voulez-vous aller ? \n Tapez 'u' 'd' 'l' ou 'r' "))
+            self.player.position.update(direction)            
+            if self.player.position in self.labyrinth._paths:
+                print("\nVous pouvez avancer !")
+            else:
+                print("\nCe chemin n'est pas autorisé !")
+                self.player.position = position_initiale
+            print("Votre position est maintenant : " + str(self.player.position))
 
 def main():
     jeu = Game()
@@ -58,10 +58,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-# hero = Position(0,0)
-# print("hero")
-#command = input("what?")
-# hero.update(command)
-# print(hero)

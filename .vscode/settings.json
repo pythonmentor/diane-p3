@@ -2,5 +2,6 @@
    "python.formatting.provider": "yapf",
    "editor.fontSize": 10,
    "editor.tabSize": 2,
-   "window.zoomLevel": null
+   "window.zoomLevel": null,
+   "python.pythonPath": "C:\\Users\\Acer Swit\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe"
 }
