@@ -12,22 +12,23 @@ class Game:
         self.running = False
         self.labyrinth = Labyrinth()
         self.labyrinth.define_path("map.txt")
-        self.player = Player("MacGyver", 0, self.labyrinth.start)
-        self.garde = Garde(self.labyrinth.end)
-        items_positions = self.labyrinth.random_pos()
+        self.player = Player("MacGyver", 0, self.labyrinth._start)
+        self.garde = Garde(self.labyrinth._end)
+        self.items_positions = self.labyrinth.random_pos()
         self.items = [
-            Item("une aiguille", items_positions[0]), 
-            Item("un petit tube en plastique", items_positions[1]), 
-            Item("de l'éther", items_positions[2])
+            Item("une aiguille", self.items_positions[0]), 
+            Item("un petit tube en plastique", self.items_positions[1]), 
+            Item("de l'éther", self.items_positions[2])
         ] 
     
     def is_valid_position(self, position):
-        self.position in self.labyrinth._paths
+        if position in self.labyrinth._paths:
+            True
 
-"""     def catch_item(self):
-        if self.player.position == self.items
+    def catch_item(self):
+        if self.player.position in self.items_positions:
             self.player.bag += 1
-            print("Bravo, vous avez attrapé " + str(self.player.bag) + " objet(s).") """
+            print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
 
     def exit(self):
         if self.player.position == (14,14) and self.player.bag == 3:
@@ -48,8 +49,6 @@ class Game:
             if self.player.position not in self.labyrinth.paths:
                 self.player.position = position_initiale
                 print("Ce chemin n'est pas autorisé!")
-
-            
 
         print("Votre position est mantenant : x = " + str(self.player.position.x) + " et y = "+ str(self.player.position.y))
 

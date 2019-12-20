@@ -1,4 +1,4 @@
-from position import Position
+from models.position import Position
 
 import random
 
