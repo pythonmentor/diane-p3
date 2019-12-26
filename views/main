@@ -1,0 +1,60 @@
+import sys, time, pygame
+from pygame.locals import (
+    K_UP,
+    K_DOWN,
+    K_LEFT,
+    K_RIGHT,
+    K_ESCAPE,
+    KEYDOWN,
+    QUIT,
+)
+
+pygame.init()
+
+screen = pygame.display.set_mode((300, 200), pygame.RESIZABLE)
+screen.fill((255, 255, 255))
+
+player = pygame.image.load(ressource/"MacGyver.png").convert_alpha()
+garde = pygame.image.load(ressource/"Gardien.png").convert_alpha()
+item1 = pygame.image.load(ressource/"seringue.png").convert_alpha()
+item2 = pygame.image.load(ressource/"ether.png").convert_alpha()
+item3 = pygame.image.load(ressource/"tube_plastique.png").convert_alpha()
+
+player_rect = player.get_rect()
+
+path = pygame.Surface((50, 50))
+path.fill((0, 0, 0))
+
+# On dessine les élèments sur l'écran
+screen.blit(player, player.position)
+screen.blit(garde, garde.position)
+screen.blit(item1, item1.position)
+screen.blit(item2, item2.position)
+screen.blit(item3, item3.position)
+pygame.display.flip()
+
+while jeu.running = True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
+        
+        if event.type == KEYDOWN:
+            if event.key == K_ESCAPE:
+                jeu.running = False
+        elif event.type == QUIT:
+            jeu.running = False
+     if event.type == pygame.KEYDOWN:
+        continuer = False
+https://zestedesavoir.com/tutoriels/846/pygame-pour-les-zesteurs/1381_a-la-decouverte-de-pygame/5508_la-gestion-des-evenements/
+https://realpython.com/pygame-a-primer/
+https://fr.m.wikibooks.org/wiki/Pygame/Chimp_-_Ligne_par_ligne
+https://fr.wikibooks.org/wiki/Pygame/Version_imprimable#D%C3%A9placer_une_image
+
+   # playerrect = playerrect.move ?
+    if playerrect.left < 0 or playerrect.right > width:
+    # impossible d'avancer
+    if playerrect.top < 0 or playerrect.bottom > height:
+    # impossible d'avancer
+
+    pygame.display.flip()
+    
+# The origin of the display, where x = 0 and y = 0, is the top left of the screen. Both axes increase positively towards the bottom right of the screen.
