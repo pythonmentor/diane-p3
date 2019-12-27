@@ -50,7 +50,7 @@ class Game:
 
                 # Voyons si la direction invite à une position valide
                 if self.player.position in self.labyrinth._paths:
-                    print("\nVous pouvez avancer !")
+                    print("\nVous avez avancé d'une case !")
                 else:
                     print("\nCe chemin n'est pas autorisé !")
                     self.player.position = position_initiale

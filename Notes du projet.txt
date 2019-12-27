@@ -63,3 +63,4 @@ ajout du fichier __init__.py dans chaque package
 - Test de la classe position qui fonctionne pour faire avancer un objet en fonction d'un input, OK
 - Toutes les classes de models sont OK
 - Comment vérifier que le chemin pris par McGyver est valide ? Faire une fonction ? Simplement demander si la nouvelle position est dans les paths
+- 
