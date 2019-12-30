@@ -1,7 +1,7 @@
 from models.item import Item
 from models.position import Position
 from models.player import Player
-from models.garde import Garde
+from models.keeper import Keeper
 from models.labyrinth import Labyrinth
 
 import random

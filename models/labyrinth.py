@@ -12,9 +12,9 @@ class Labyrinth:
         self.start = None
         self.end = None
         self.walls = []
-        self.aiguille = Item("une aiguille", position)
-        self.tube = Item("un petit tube en plastique", position)
-        self.ether = Item("de l'éther", position)
+        self.aiguille = Item("une aiguille", [], "resources/aiguille.png")
+        self.tube = Item("un petit tube en plastique", [], "resources/tube.png")
+        self.ether = Item("de l'éther", [], "resources/ether.png")
         self.items_positions = [self.aiguille.position, self.tube.position, self.ether.position]
 
     def define_path(self, filename):
@@ -37,3 +37,8 @@ class Labyrinth:
                 
         self.paths.append(self.end)
         self.paths.append(self.start)
+    
+    def random_pos(self, number):
+        """ This gives a position in paths that is neither the beginning nor the end. """
+        list = random.sample(self.paths[:-2], 3)
+        self.position = list[number]

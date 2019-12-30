@@ -1,5 +1,3 @@
-import random
-
 class Position: 
     """ Cette classe définit une position."""
 
