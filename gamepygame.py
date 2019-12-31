@@ -39,14 +39,14 @@ class Game:
 
     def start(self):
         self.running = True
-        pygame.display.set_caption('Labyrinthe MacGyver')
-        pygame.mouse.set_visible(0)
-        clock = pygame.time.Clock()
-        clock.tick(60)
-
         # We create our window and fill it with maroon
         screen = pygame.display.set_mode((self.labyrinth.width*SPRITE_SIZE, self.labyrinth.length*SPRITE_SIZE))
         screen.fill((153,101,21))
+        pygame.display.set_caption('Labyrinthe MacGyver')
+        pygame.mouse.set_visible(0)
+        clock = pygame.time.Clock()
+
+
         # On créé le fond de notre labyrinthe
         background = pygame.Surface((self.labyrinth.width*SPRITE_SIZE, self.labyrinth.length*SPRITE_SIZE))
         background.fill(COLOR_MAROON)
@@ -56,8 +56,12 @@ class Game:
         for position in self.labyrinth.paths:
             background.blit(path, (position.y * SPRITE_SIZE, position.x * SPRITE_SIZE))
 
-
+        playersprite = PlayerSprite(self.player, "resources/player.png")
+        keepersprite = KeeperSprite(self.keeper, "resources/keeper.png")
+        allsprites = pygame.sprite.RenderPlain((playersprite, keepersprite))
+        
         while self.running:
+            clock.tick(30)
             for event in pygame.event.get():
                 if event.type == QUIT:
                     self.running = False
@@ -69,17 +73,12 @@ class Game:
                     elif event.key == pygame.K_RIGHT:
                         self.player.move(r)            
                     elif event.key == pygame.K_LEFT:
-                        self.player.move(l)         
-
-        playersprite = PlayerSprite(self.player, "resources/player.png")
-        keepersprite = KeeperSprite(self.keeper, "resources/keeper.png")
-        allsprites = pygame.sprite.RenderPlain((playersprite, keepersprite))
-        allsprites.update()
-
-        # Draw Everything
-        allsprites.draw(screen)
-        screen.blit(background, (0, 0))
-        pygame.display.flip()
+                        self.player.move(l)                
+            allsprites.update()
+            # Draw Everything
+            allsprites.draw(screen)
+            screen.blit(background, (0, 0))
+            pygame.display.flip()
 
 
 def main():
