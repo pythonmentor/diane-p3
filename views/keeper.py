@@ -1,4 +1,4 @@
-from views import images
+from . import images
 from constants import SPRITE_SIZE
 import pygame
 
@@ -7,7 +7,7 @@ class KeeperSprite(pygame.sprite.Sprite):
     le player quand il a attrapé un objet."""
     def __init__(self, keeper, filename):
         super().__init__()        #Appel du constructeur de Sprite
-        self.image, self.rect = load_image(filename, -1)
+        self.image, self.rect = images.load_image(filename, -1)
         screen = pygame.display.get_surface()
         self.area = screen.get_rect()
         self.rect.topleft = 10, 10
@@ -17,5 +17,5 @@ class KeeperSprite(pygame.sprite.Sprite):
     
     def update(self):
         "Déplace ou fait tournoyer, suivant l'état du singe"
-        self.rect.x = self.player.position.x *  SPRITE_SIZE
-        self.rect.y = self.player.position.y * SPRITE_SIZE
+        self.rect.x = self.keeper.position.x *  SPRITE_SIZE
+        self.rect.y = self.keeper.position.y * SPRITE_SIZE

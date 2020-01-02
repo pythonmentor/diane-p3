@@ -1,4 +1,4 @@
-from views import images
+from .images import load_image
 from constants import SPRITE_SIZE
 import pygame
 

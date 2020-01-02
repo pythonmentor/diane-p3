@@ -9,7 +9,6 @@ from views.keeper import KeeperSprite
 from views.player import PlayerSprite
 from constants import SPRITE_SIZE, COLOR_MAROON, COLOR_GREEN
 
-
 import random
 import pygame, os, time
 from copy import copy
@@ -56,8 +55,8 @@ class Game:
         for position in self.labyrinth.paths:
             background.blit(path, (position.y * SPRITE_SIZE, position.x * SPRITE_SIZE))
 
-        playersprite = PlayerSprite(self.player, "resources/player.png")
-        keepersprite = KeeperSprite(self.keeper, "resources/keeper.png")
+        playersprite = PlayerSprite(self.player, "player.png")
+        keepersprite = KeeperSprite(self.keeper, "keeper.png")
         allsprites = pygame.sprite.RenderPlain((playersprite, keepersprite))
         
         while self.running:
