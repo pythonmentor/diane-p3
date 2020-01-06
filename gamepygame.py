@@ -35,6 +35,7 @@ class Game:
         self.tube = Item("Tube", self.labyrinth.random_pos(0))
         self.ether = Item("Ether", self.labyrinth.random_pos(1))
         self.needle = Item("Needle", self.labyrinth.random_pos(2))
+        # self.items_positions = [self.aiguille.position, self.tube.position, self.ether.position]
 
     def start(self):
         self.running = True
@@ -48,7 +49,6 @@ class Game:
 
         # On créé le fond de notre labyrinthe
         background = pygame.Surface((self.labyrinth.width*SPRITE_SIZE, self.labyrinth.length*SPRITE_SIZE))
-        background.fill(COLOR_GREEN)
         walls_image = pygame.image.load("resources/brique.png")
         for position in self.labyrinth.walls:
             background.blit(walls_image, (position.x * SPRITE_SIZE, position.y * SPRITE_SIZE))
@@ -56,16 +56,21 @@ class Game:
         path_image = pygame.image.load("resources/path.png")
         for position in self.labyrinth.paths:
             background.blit(path_image, (position.x * SPRITE_SIZE, position.y * SPRITE_SIZE))
+        # On créé la ligne de sac
+        bar_image = pygame.Surface((SPRITE_SIZE, SPRITE_SIZE))
+        bar_image.fill(COLOR_GREEN)
+        for position in self.labyrinth.bar:
+            background.blit(bar_image, (position.x * SPRITE_SIZE, position.y * SPRITE_SIZE))
+
         # On ajoute les items
         # On instancie les sprite
         player_sprite = PlayerSprite(self.player, "paw.png")
         keeper_sprite = KeeperSprite(self.keeper, "keeper.png")
         tube_sprite = ItemSprite(self.tube, "tube.png")
-        pygame.transform.scale(tube_sprite.image, (32, 32))
         ether_sprite = ItemSprite(self.ether, "ether.png")
-        needle_sprite = ItemSprite(self.needle, "needle2.png")
+        needle_sprite = ItemSprite(self.needle, "needle3.png")
 
-        allsprites = pygame.sprite.RenderPlain(player_sprite, keeper_sprite, tube_sprite, keeper_sprite, ether_sprite)
+        allsprites = pygame.sprite.RenderPlain(player_sprite, needle_sprite, tube_sprite, keeper_sprite, ether_sprite)
         
         while self.running:
             clock.tick(30)
@@ -82,12 +87,13 @@ class Game:
                         self.player.move("r", self.labyrinth.paths)
                     elif event.key == pygame.K_LEFT:
                         self.player.move("l", self.labyrinth.paths)
-                    else:pass
+                    else:
+                        pass
                 else:
                     pass
             # Draw Everything
             allsprites.update()
-            allsprites.draw(background)
+            allsprites.draw(screen)
             pygame.display.flip()
             
 

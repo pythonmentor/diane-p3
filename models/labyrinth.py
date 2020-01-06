@@ -12,10 +12,7 @@ class Labyrinth:
         self.start = None
         self.end = None
         self.walls = []
-        self.aiguille = Item("une aiguille", [])
-        self.tube = Item("un petit tube en plastique", [])
-        self.ether = Item("de l'éther", [])
-        self.items_positions = [self.aiguille.position, self.tube.position, self.ether.position]
+        self.bar = []
 
     def define_path(self, filename):
         """ Cette fonction map les chemins et les positions du labyrinthe en fonction d'un fichier texte. """
@@ -32,6 +29,8 @@ class Labyrinth:
                         self.end = Position(num_c, num_line)
                     elif c == "-":
                         self.walls.append(Position(num_c, num_line))
+                    elif c == "#":
+                        self.bar.append(Position(num_c, num_line))
         self.width = num_c + 1
         self.length = num_line + 1
                 
@@ -40,5 +39,5 @@ class Labyrinth:
     
     def random_pos(self, number):
         """ This gives a position in paths that is neither the beginning nor the end. """
-        list = random.sample(self.paths[:-2], 3)
-        self.position = list[number]
+        positions = random.sample(self.paths[:-2], 3)
+        return positions[number]
