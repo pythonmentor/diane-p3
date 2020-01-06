@@ -6,7 +6,7 @@ import pygame
 def load_image(name, colorkey=None):
     fullname = os.path.join('resources', name)
     try:
-        image = pygame.image.load(fullname)
+        image =  pygame.transform.scale(pygame.image.load(fullname), (32, 32))
     except pygame.error as message:
         print("Impossible de charger l'image :", name)
         raise SystemExit

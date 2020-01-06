@@ -12,9 +12,9 @@ class Labyrinth:
         self.start = None
         self.end = None
         self.walls = []
-        self.aiguille = Item("une aiguille", [], "resources/aiguille.png")
-        self.tube = Item("un petit tube en plastique", [], "resources/tube.png")
-        self.ether = Item("de l'éther", [], "resources/ether.png")
+        self.aiguille = Item("une aiguille", [])
+        self.tube = Item("un petit tube en plastique", [])
+        self.ether = Item("de l'éther", [])
         self.items_positions = [self.aiguille.position, self.tube.position, self.ether.position]
 
     def define_path(self, filename):

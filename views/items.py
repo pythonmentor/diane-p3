@@ -1,4 +1,4 @@
-from views import images
+from .images import load_image
 from constants import SPRITE_SIZE
 
 import pygame
@@ -15,8 +15,3 @@ class ItemSprite(pygame.sprite.Sprite):
         self.move = 9
         self.dizzy = 0
         self.item = item
-    
-    def update(self):
-        "Déplace ou fait tournoyer, suivant l'état du singe"
-        self.rect.x = self.player.position.x *  SPRITE_SIZE
-        self.rect.y = self.player.position.y * SPRITE_SIZE

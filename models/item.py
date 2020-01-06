@@ -1,5 +1,4 @@
 class Item:
-    def __init__(self, name, position, filename):
+    def __init__(self, name, position):
         self.name = name
         self.position = position
-        self.filename = filename
