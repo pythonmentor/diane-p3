@@ -27,7 +27,7 @@ class Player:
                 print("Bravo, vous avez pu endormir le garde et sortir du labyrinthe, vous avez gagné !")
             else:
                 print("Et non, il vous manquait un ou des objets, perdu")
-                pygame.QUIT
+                self.jeu.running = False
         else:
             pass
 

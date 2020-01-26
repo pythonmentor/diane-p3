@@ -23,9 +23,16 @@ from pygame import (
     QUIT,
 )
 
+if not pygame.font:
+    print("Warning, fonts disabled")
+if not pygame.mixer:
+    print("Warning, sound disabled")
+
 class Game:
     def __init__(self):
-        """ Cette fonction initie le jeu avec un labyrinthe, un joueur, un garde et 3 items éparpillés. """
+        """this function is called when the program starts.
+        it initializes everything it needs, then runs in
+        a loop until the function returns."""
         pygame.init()
         self.running = False
         self.labyrinth = Labyrinth()
@@ -41,15 +48,14 @@ class Game:
         self.running = True
         # We create our window and fill it with maroon
         screen = pygame.display.set_mode((self.labyrinth.width*SPRITE_SIZE, self.labyrinth.length*SPRITE_SIZE))
-        screen.fill((153,101,21))
+        screen.fill(COLOR_MAROON)
         pygame.display.set_caption('Labyrinthe MacGyver')
-        pygame.mouse.set_visible(0)
         clock = pygame.time.Clock()
 
 
         # On créé le fond de notre labyrinthe
         background = pygame.Surface((self.labyrinth.width*SPRITE_SIZE, self.labyrinth.length*SPRITE_SIZE))
-        walls_image = pygame.image.load("resources/brique.png")
+        walls_image = pygame.image.load("resources/wall.png")
         for position in self.labyrinth.walls:
             background.blit(walls_image, (position.x * SPRITE_SIZE, position.y * SPRITE_SIZE))
         # On créé les chemins
@@ -64,11 +70,11 @@ class Game:
 
         # On ajoute les items
         # On instancie les sprite
-        player_sprite = PlayerSprite(self.player, "paw.png")
+        player_sprite = PlayerSprite(self.player, "player.png")
         keeper_sprite = KeeperSprite(self.keeper, "keeper.png")
         tube_sprite = ItemSprite(self.tube, "tube.png")
         ether_sprite = ItemSprite(self.ether, "ether.png")
-        needle_sprite = ItemSprite(self.needle, "needle3.png")
+        needle_sprite = ItemSprite(self.needle, "needle.png")
 
         allsprites = pygame.sprite.RenderPlain(player_sprite, needle_sprite, tube_sprite, keeper_sprite, ether_sprite)
         
