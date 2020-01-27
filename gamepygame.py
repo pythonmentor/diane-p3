@@ -37,12 +37,16 @@ class Game:
         self.running = False
         self.labyrinth = Labyrinth()
         self.labyrinth.define_path("map.txt")
-        self.player = Player("MacGyver", 0, self.labyrinth.start.get_position(), self )
+        self.player = Player("MacGyver", 0, self.labyrinth.start.get_position(), self)
         self.keeper = Keeper(copy(self.labyrinth.end))
         self.tube = Item("Tube", self.labyrinth.random_pos(0))
         self.ether = Item("Ether", self.labyrinth.random_pos(1))
         self.needle = Item("Needle", self.labyrinth.random_pos(2))
-        # self.items_positions = [self.aiguille.position, self.tube.position, self.ether.position]
+        self.labyrinth.item_positions = {
+            self.tube.position.xy: self.tube,
+            self.ether.position.xy: self.ether,
+            self.needle.position.xy: self.needle
+        }
 
     def start(self):
         self.running = True
@@ -86,17 +90,18 @@ class Game:
                     self.running = False
                 elif event.type == KEYDOWN:
                     if event.key == pygame.K_UP:
-                        self.player.move("u", self.labyrinth.paths)  
+                        self.player.move("u")  
                     elif event.key == pygame.K_DOWN:
-                        self.player.move("d", self.labyrinth.paths)       
+                        self.player.move("d")       
                     elif event.key == pygame.K_RIGHT:
-                        self.player.move("r", self.labyrinth.paths)
+                        self.player.move("r")
                     elif event.key == pygame.K_LEFT:
-                        self.player.move("l", self.labyrinth.paths)
+                        self.player.move("l")
                     else:
                         pass
                 else:
                     pass
+                
             # Draw Everything
             allsprites.update()
             allsprites.draw(screen)

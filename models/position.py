@@ -33,3 +33,7 @@ class Position:
         """ Cette fonction renvoie la position sous forme x y"""
         
         return f"Position ({self.x}, {self.y})"
+
+    @property
+    def xy(self):
+        return self.x, self.y

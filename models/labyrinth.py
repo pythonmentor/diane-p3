@@ -13,6 +13,7 @@ class Labyrinth:
         self.end = None
         self.walls = []
         self.bar = []
+        self.item_positions = []
 
     def define_path(self, filename):
         """ Cette fonction map les chemins et les positions du labyrinthe en fonction d'un fichier texte. """

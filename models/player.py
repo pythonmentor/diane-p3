@@ -15,11 +15,12 @@ class Player:
         self.jeu = jeu
 
     def catch_item(self):
-        if self.position in self.jeu.labyrinth.items_positions:
-            self.player.bag += 1
-            print("Bravo, vous avez " + str(self.player.bag) + " objet(s).")
-        else:
-            pass
+        print("Bravo, vous avez " + str(self.bag) + " objet(s).")
+        print(self.jeu.labyrinth.item_positions)
+        if self.position.xy in self.jeu.labyrinth.item_positions:
+            self.bag += 1
+            self.jeu.labyrinth.item_positions[self.position.xy].status = "catched"
+            self.jeu.labyrinth.item_positions[self.position.xy].position = Position(15, 0)
 
     def exit(self):
         if self.position == self.jeu.labyrinth.end:
@@ -31,11 +32,11 @@ class Player:
         else:
             pass
 
-    def move(self, direction, paths):
+    def move(self, direction):
         # Voyons si la direction invite à une position valide
         prev_position = copy(self.position)
         self.position.update(direction)
-        if self.position in paths:
+        if self.position in self.jeu.labyrinth.paths:
             #Voyons si nous sommes sur la case de sortie
             self.exit()
             # punch_sound = load_sound("punch.wav")
@@ -47,3 +48,4 @@ class Player:
             # Faisons avancer MacGyver 
         else:
             self.position = prev_position
+        self.catch_item()

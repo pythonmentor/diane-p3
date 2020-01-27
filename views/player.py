@@ -3,8 +3,7 @@ from constants import SPRITE_SIZE
 import pygame
 
 class PlayerSprite(pygame.sprite.Sprite): 
-    """Déplace un player à travers l'écran. Elle peut faire tournoyer
-    le player quand il a attrapé un objet."""
+    """kk"""
     
     def __init__(self, player, filename):
         super().__init__()      #Appel du constructeur de Sprite
@@ -13,7 +12,7 @@ class PlayerSprite(pygame.sprite.Sprite):
         self.bag = 0
     
     def update(self):
-        "Déplace ou fait tournoyer, suivant l'état du singe"
+        "jj"
         self.rect.x = self.player.position.x * SPRITE_SIZE
         self.rect.y = self.player.position.y * SPRITE_SIZE
 
