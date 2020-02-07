@@ -13,7 +13,7 @@ class Labyrinth:
         self.end = None
         self.walls = []
         self.bar = []
-        self.item_positions = []
+        self.item_positions = {}
 
     def define_path(self, filename):
         """ Cette fonction map les chemins et les positions du labyrinthe en fonction d'un fichier texte. """
@@ -37,8 +37,9 @@ class Labyrinth:
                 
         self.paths.append(self.end)
         self.paths.append(self.start)
+
+        self.random_positions = random.sample(self.paths[:-2], 3)
     
     def random_pos(self, number):
         """ This gives a position in paths that is neither the beginning nor the end. """
-        positions = random.sample(self.paths[:-2], 3)
-        return positions[number]
+        return self.random_positions[number]

@@ -15,12 +15,16 @@ class Player:
         self.jeu = jeu
 
     def catch_item(self):
-        print("Bravo, vous avez " + str(self.bag) + " objet(s).")
-        print(self.jeu.labyrinth.item_positions)
         if self.position.xy in self.jeu.labyrinth.item_positions:
             self.bag += 1
-            self.jeu.labyrinth.item_positions[self.position.xy].status = "catched"
-            self.jeu.labyrinth.item_positions[self.position.xy].position = Position(15, 0)
+            print("Bravo, vous avez " + str(self.bag) + " objet(s).")
+            print(self.jeu.labyrinth.item_positions)
+            item = self.jeu.labyrinth.item_positions[self.position.xy]
+            item.status = "catched"
+            item.position = Position(self.bag-1, 15)
+            del self.jeu.labyrinth.item_positions[self.position.xy]
+            self.jeu.labyrinth.item_positions[(self.bag-1, 15)] = item
+            
 
     def exit(self):
         if self.position == self.jeu.labyrinth.end:
